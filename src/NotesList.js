@@ -2,8 +2,13 @@ import React from "react";
 import Note from "./Note";
 
 const NotesList = (props) => {
+  // only keep notes that match search property
+  const keepSearchMatches = (note) => note.doesMatchSearch;
+  // filter through notesList to keep notes that match search
+  const searchMatches = props.notes.filter(keepSearchMatches);
+
   const renderNote = (note) => <Note note={note} key={note.id} />;
-  const notesList = props.notes.map(renderNote);
+  const notesList = searchMatches.map(renderNote);
   return <ul className="notes-list">{notesList}</ul>;
 };
 

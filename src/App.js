@@ -21,7 +21,7 @@ class App extends Component {
         id: 2,
         title: "code",
         description: "build an awesome ui",
-        doesMatchSearch: true
+        doesMatchSearch: false
       }
     ],
     searchText: "Search here..."
@@ -30,8 +30,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <NotesList />
+        <Header searchText={this.state.searchText} />
+        <NotesList notes={this.state.notes} />
       </div>
     );
   }
