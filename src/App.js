@@ -47,10 +47,39 @@ class App extends Component {
     this.setState({ notes: updatedNotes });
   };
 
+  // Check if user search input matches title or description of a note
+  onSearch = (text) => {
+    const newSearchText = text.toLowerCase();
+    // map over all notes and see if input text matches text in fields
+    const updatedNotes = this.state.notes.map((note) => {
+      if (!newSearchText) {
+        note.doesMatchSearch = true;
+      } else {
+        const title = note.title.toLowerCase();
+        const description = note.description.toLowerCase();
+        const titleMatch = title.includes(newSearchText);
+        const descriptionMatch = description.includes(newSearchText);
+        titleMatch || descriptionMatch
+          ? (note.doesMatchSearch = true)
+          : (note.doesMatchSearch = false);
+      }
+      return note;
+    });
+
+    this.setState({
+      notes: updatedNotes,
+      searchText: newSearchText
+    });
+  };
+
   render() {
     return (
       <div>
-        <Header addNote={this.addNote} searchText={this.state.searchText} />
+        <Header
+          onSearch={this.onSearch}
+          addNote={this.addNote}
+          searchText={this.state.searchText}
+        />
         <NotesList onType={this.onType} notes={this.state.notes} />
       </div>
     );
