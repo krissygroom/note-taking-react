@@ -1,7 +1,8 @@
 import React from "react";
 
 const Note = (props) => {
-  // event listener
+  const deleteById = () => props.removeNote(props.note.id);
+
   const updateField = (e) => {
     const updatedValue = e.target.value;
     const editNoteId = props.note.id;
@@ -25,7 +26,9 @@ const Note = (props) => {
         value={props.note.description}
         onChange={updateField}
       />
-      <span className="note__delete">X</span>
+      <span className="note__delete" onClick={deleteById}>
+        X
+      </span>
     </li>
   );
 };

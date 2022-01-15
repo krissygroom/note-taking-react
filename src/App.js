@@ -72,6 +72,13 @@ class App extends Component {
     });
   };
 
+  // Remove note if click on X
+  removeNote = (noteId) => {
+    // filter out note clicked on
+    const updatedNotes = this.state.notes.filter((note) => note.id !== noteId);
+    this.setState({ notes: updatedNotes });
+  };
+
   render() {
     return (
       <div>
@@ -80,7 +87,11 @@ class App extends Component {
           addNote={this.addNote}
           searchText={this.state.searchText}
         />
-        <NotesList onType={this.onType} notes={this.state.notes} />
+        <NotesList
+          removeNote={this.removeNote}
+          onType={this.onType}
+          notes={this.state.notes}
+        />
       </div>
     );
   }
