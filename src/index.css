@@ -5,6 +5,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,7 +25,7 @@ textarea {
 
 .app-header__title {
   margin: 10px 20px 0px;
-  font-family: Arial, sans-serif;
+  font-weight: 700;
 }
 
 .app-header__controls {
@@ -35,6 +36,8 @@ textarea {
 
 .search,
 .add-new {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
   font-size: 14px;
   padding: 5px;
   margin: 8px;
@@ -54,6 +57,14 @@ textarea {
   outline: none;
 }
 
+.add-new:hover {
+  filter: brightness(90%);
+}
+
+.add-new:active {
+  filter: brightness(80%);
+}
+
 .note {
   font-family: "Permanent Marker", cursive;
   width: 200px;
@@ -71,6 +82,7 @@ textarea {
 .note__title,
 .note__description {
   font-family: "Permanent Marker", cursive;
+  letter-spacing: 1px;
   width: 100%;
   padding: 8px 14px;
   background: transparent;
