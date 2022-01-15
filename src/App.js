@@ -15,6 +15,20 @@ class App extends Component {
     searchText: ""
   };
 
+  // Lifecycle methods
+  componentDidMount() {
+    const savedNotesString = localStorage.getItem("savedNotes");
+    if (savedNotesString) {
+      const savedNotes = JSON.parse(savedNotesString);
+      this.setState({ notes: savedNotes });
+    }
+  }
+
+  componentDidUpdate() {
+    const savedNotesString = JSON.stringify(this.state.notes);
+    localStorage.setItem("savedNotes", savedNotesString);
+  }
+
   // create a new note when button is clicked
   addNote = () => {
     const newNote = {
