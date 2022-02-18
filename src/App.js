@@ -9,10 +9,10 @@ class App extends Component {
         id: Date.now(),
         title: "",
         description: "",
-        doesMatchSearch: true
-      }
+        doesMatchSearch: true,
+      },
     ],
-    searchText: ""
+    searchText: "",
   };
 
   // Lifecycle methods
@@ -35,7 +35,7 @@ class App extends Component {
       id: Date.now(),
       title: "",
       description: "",
-      doesMatchSearch: true
+      doesMatchSearch: true,
     };
     // add new note to existing notes array in state
     this.setState({ notes: [newNote, ...this.state.notes] });
@@ -44,7 +44,7 @@ class App extends Component {
   // Fill in fields of Note when user types
   onType = (editNoteId, updatedField, updatedValue) => {
     // editNoteId === id of note that user clicks on to edit
-    // updatedField === title/description?
+    // updatedField === title
     // updatedValue === text entered in the field
     const updatedNotes = this.state.notes.map((note) => {
       if (note.id === editNoteId) {
@@ -82,7 +82,7 @@ class App extends Component {
 
     this.setState({
       notes: updatedNotes,
-      searchText: newSearchText
+      searchText: newSearchText,
     });
   };
 
